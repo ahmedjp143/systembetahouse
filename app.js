@@ -1,8 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server-core');
 const cors = require('cors');
@@ -23,16 +21,9 @@ var app = express();
 app.use(cors());
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
-app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+
 app.get('/', (req, res) => {
   res.json('hi xasan');
 });
