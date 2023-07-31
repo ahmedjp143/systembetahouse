@@ -33,7 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
-  res.json('hi wolrd');
+  res.json('hi xasan');
 });
 
 app.use('/users', usersRouter);
