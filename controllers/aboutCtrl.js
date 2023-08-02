@@ -23,7 +23,7 @@ const aboutpostdata = async (req, res, next) => {
   try {
     const { error } = Aboutvalidation(req.body);
     if (error) return res.status(400).send(error.message);
-    const getabout = await aboutModel.find();
+    const getabout = await aboutModel.find().sort({ _id: -1 }).limit(1);
     if (getabout) {
       const update = await aboutModel.findByIdAndUpdate(
         getabout._id,
