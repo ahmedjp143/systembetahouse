@@ -30,6 +30,7 @@ const aboutpostdata = async (req, res, next) => {
         req.body,
         { new: true }
       );
+      await update.save();
       res.status(200).send(update);
     } else {
       const postabout = await aboutModel(req.body);
