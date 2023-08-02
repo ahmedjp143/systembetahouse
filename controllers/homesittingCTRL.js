@@ -5,7 +5,7 @@ const {
 // get data from company
 const gethomesittinginfo = async (req, res, next) => {
   try {
-    const getdata = await HomeSittingModel.find();
+    const getdata = await HomeSittingModel.find().sort({ _id: -1 }).limit(1);
     res.status(200).send(getdata);
   } catch (error) {
     res.status(400).send(error.message);
