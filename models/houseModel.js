@@ -24,16 +24,18 @@ const houseShema = new mongoose.Schema({
     required: true,
   },
   parking: {
-    type: Boolean,
+    type: String,
     required: true,
+    enum: ['haa', 'maya'],
   },
   imagespriview: {
     type: String,
     required: true,
   },
   isAvailable: {
-    type: Boolean,
+    type: String,
     required: true,
+    enum: ['haa', 'maya'],
   },
   Rooms: {
     type: Number,
@@ -66,9 +68,9 @@ function housevalidation(houObj) {
     address: joi.string().required(),
     rent: joi.number().required(),
     deposit: joi.number().required(),
-    parking: joi.boolean().required(),
+    parking: joi.string().required(),
     imagespriview: joi.string().required(),
-    isAvailable: joi.boolean().required(),
+    isAvailable: joi.string().required(),
     Rooms: joi.number().required(),
     toilets: joi.number().required(),
     MasterRoom: joi.number().required(),
