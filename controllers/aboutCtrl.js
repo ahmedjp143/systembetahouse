@@ -27,7 +27,10 @@ const aboutpostdata = async (req, res, next) => {
     if (getabout) {
       const updatedataabout = await aboutModel.findByIdAndUpdate(
         getabout._id,
-        req.body,
+        {
+          FaahFaahin: req.body.FaahFaahin,
+          FaahFaaahinYar: req.body.FaahFaaahinYar,
+        },
         { new: true }
       );
 
