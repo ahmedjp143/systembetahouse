@@ -25,13 +25,13 @@ const aboutpostdata = async (req, res, next) => {
     if (error) return res.status(400).send(error.message);
     const getabout = await aboutModel.find().sort({ _id: -1 }).limit(1);
     if (getabout) {
-      const update = await aboutModel.findByIdAndUpdate(
+      const updatedataabout = await aboutModel.findByIdAndUpdate(
         getabout._id,
         req.body,
         { new: true }
       );
-      await update.save();
-      res.status(200).send(update);
+      await updatedataabout.save();
+      res.status(200).send(updatedataabout);
     } else {
       const postabout = await aboutModel(req.body);
       await postabout.save();
