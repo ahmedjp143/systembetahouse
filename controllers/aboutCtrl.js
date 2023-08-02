@@ -23,11 +23,21 @@ const aboutpostdata = async (req, res, next) => {
   try {
     const { error } = Aboutvalidation(req.body);
     if (error) return res.status(400).send(error.message);
-    const postabout = await aboutModel(req.body);
-    await postabout.save();
-    res
-      .status(201)
-      .send({ status: true, postabout, message: 'successfully saved' });
+    const getabout = await aboutModel.find();
+    if (getabout) {
+      const update = await aboutModel.findByIdAndUpdate(
+        getabout._id,
+        req.body,
+        { new: true }
+      );
+      res.status(200).send(update);
+    } else {
+      const postabout = await aboutModel(req.body);
+      await postabout.save();
+      res
+        .status(201)
+        .send({ status: true, postabout, message: 'successfully saved' });
+    }
   } catch (error) {
     res.status(404).send(error.message);
   }
