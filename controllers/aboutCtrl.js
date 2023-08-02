@@ -2,7 +2,7 @@ const { Aboutvalidation, aboutModel } = require('../models/aboutModel');
 
 const aboutgetdata = async (req, res, next) => {
   try {
-    const data = await aboutModel.find();
+    const data = await aboutModel.find().sort({ _id: -1 }).limit(1);
     res.status(200).send(data);
   } catch (error) {
     res.status(404).send(error.message);
