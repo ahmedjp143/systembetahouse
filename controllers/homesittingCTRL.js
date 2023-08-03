@@ -28,14 +28,25 @@ const homesittingpostdata = async (req, res, next) => {
   try {
     const { error } = homesittingvalidation(req.body);
     if (error) return res.status(400).send(error.message);
-
-    const postdata = await HomeSittingModel(req.body);
-    await postdata.save();
-    res.status(201).send({
-      status: true,
-      postdata,
-      message: 'succefully created company information',
-    });
+    const housesetingget = await HomeSittingModel.find()
+      .sort({ _id: -1 })
+      .limit(1);
+    if (housesetingget) {
+      const updatedata = await HomeSittingModel.findByIdAndUpdate(
+        housesetingget[0]._id,
+        req.body,
+        { new: true }
+      );
+      res.status(200).send(updatedata);
+    } else {
+      const postdata = await HomeSittingModel(req.body);
+      await postdata.save();
+      res.status(201).send({
+        status: true,
+        postdata,
+        message: 'succefully created company information',
+      });
+    }
   } catch (error) {
     res.status(400).send(error.message);
   }
