@@ -24,6 +24,7 @@ const userShema = new mongoose.Schema({
   },
   Role: {
     type: String,
+    required: true,
   },
 });
 
@@ -36,7 +37,7 @@ function uservalidation(rcObj) {
     email: joi.string().email().trim(true).required(),
     password: joi.string().required(),
     status: joi.string().required(),
-    Role: joi.string(),
+    Role: joi.string().required(),
   });
   return userval.validate(rcObj);
 }

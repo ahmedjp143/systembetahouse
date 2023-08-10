@@ -74,27 +74,26 @@ const LOGIN = async (req, res, next) => {
   }
 };
 // varifocation token
-const varifyToken = async (req, res, next) => {
-  const token = req.headers['token'];
-  // check token
-  if (!token) {
-    return res
-      .status(403)
-      .send({ message: 'raali noqo ogolaansho uma hesatid' });
-  }
-  // check token expiration
-  await jwt.verify(token, 'betahouse', (err, user) => {
-    if (err) {
-      return res.send({ message: 'token kaagu waa dhacy' });
-    }
-    console.log(user.id);
-  });
-  next();
-};
+// const varifyToken = async (req, res, next) => {
+//   const token = req.headers['token'];
+//   // check token
+//   if (!token) {
+//     return res
+//       .status(403)
+//       .send({ message: 'raali noqo ogolaansho uma hesatid' });
+//   }
+//   // check token expiration
+//   await jwt.verify(token, 'betahouse', (err, user) => {
+//     if (err) {
+//       return res.send({ message: 'token kaagu waa dhacy' });
+//     }
+//     console.log(user.id);
+//   });
+//   next();
+// };
 
 module.exports = {
   usergetdata,
   signup,
   LOGIN,
-  varifyToken,
 };

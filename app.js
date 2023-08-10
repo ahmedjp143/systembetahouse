@@ -15,6 +15,7 @@ const contactRouter = require('./routes/contactRouter');
 const galleryRouter = require('./routes/galleryRouter');
 const serviceRouter = require('./routes/serviceRouter');
 const ourclientRouter = require('./routes/ourclientRouter');
+const Authotications = require('./middlewares/verifyToken');
 // var usersRouter = require('./routes/users');
 
 var app = express();
