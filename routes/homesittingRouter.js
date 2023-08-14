@@ -12,12 +12,12 @@ router.get('/', gethomesittinginfo);
 router.get('/:id', Homesittinggetoneinfo);
 router.post(
   '/',
-  Authotications(['Admin', 'costomercare']),
+
   homesittingpostdata
 );
 router.put(
   '/:id',
-  Authotications(['Admin', 'costomercare']),
+
   homesittingupdateinfo
 );
 
