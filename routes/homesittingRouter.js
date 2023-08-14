@@ -10,7 +10,15 @@ const router = express.Router();
 
 router.get('/', gethomesittinginfo);
 router.get('/:id', Homesittinggetoneinfo);
-router.post('/', homesittingpostdata);
-router.put('/:id', homesittingupdateinfo);
+router.post(
+  '/',
+  Authotications(['Admin', 'costomercare']),
+  homesittingpostdata
+);
+router.put(
+  '/:id',
+  Authotications(['Admin', 'costomercare']),
+  homesittingupdateinfo
+);
 
 module.exports = router;
