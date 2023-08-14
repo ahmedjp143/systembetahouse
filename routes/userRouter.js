@@ -8,7 +8,7 @@ const {
 const Authotications = require('../middlewares/verifyToken');
 
 const router = express.Router();
-router.get('/', usergetdata);
+router.get('/', Authotications(['Admin', 'costomercare']), usergetdata);
 router.get('/:id', usergetbyid);
 router.post('/signup', signup);
 router.post('/login', LOGIN);

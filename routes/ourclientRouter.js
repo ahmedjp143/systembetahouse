@@ -11,8 +11,8 @@ const router = express.Router();
 
 router.get('/', clientgetdata);
 router.get('/:id', clientgetbyid);
-router.post('/', clientpost);
-router.put('/:id', clientupdate);
+router.post('/', Authotications(['Admin', 'costomercare']), clientpost);
+router.put('/:id', Authotications(['Admin', 'costomercare']), clientupdate);
 router.delete('/:id', deleteDataclient);
 
 module.exports = router;

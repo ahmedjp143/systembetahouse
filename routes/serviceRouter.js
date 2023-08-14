@@ -8,6 +8,6 @@ const {
 const router = express.Router();
 router.get('/', serveicegetdata);
 router.get('/:id', servicegetbyid);
-router.post('/', servicepost);
-router.put('/:id', serviceupdate);
+router.post('/', Authotications(['Admin', 'costomercare']), servicepost);
+router.put('/:id', Authotications(['Admin', 'costomercare']), serviceupdate);
 module.exports = router;
