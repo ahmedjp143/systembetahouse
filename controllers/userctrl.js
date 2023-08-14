@@ -15,6 +15,18 @@ const usergetdata = async (req, res, next) => {
     console.log(error);
   }
 };
+// get by id
+const usergetbyid = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const usersgetbyid = await userModel.findById(id);
+    if (!usersgetbyid)
+      return res.status(404).send({ message: 'Service not found' });
+    res.status(200).send(usersgetbyid);
+  } catch (error) {
+    res.status(404).send(error.message);
+  }
+};
 // singup
 const signup = async (req, res, next) => {
   // input validation from request
@@ -96,4 +108,5 @@ module.exports = {
   usergetdata,
   signup,
   LOGIN,
+  usergetbyid,
 };
